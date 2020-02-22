@@ -23,7 +23,6 @@ $js = new AssetCollection(
 );
 //设置静态文件目录模板【由var内的字符串组合成的类似正则替换的文件目录】
 $js->setTargetPath('{path}');
-
 //创建文件管理对象
 $am = new AssetManager();
 //取名
@@ -33,7 +32,9 @@ $am->set('base_css', $js);
 //最终生成的文件路径：dir.'/'. 正则替换后的targetPath. filename
 $writer = new AssetWriter('.', array('path'=>array('assets/css/base_development201809212230.css')));
 $writer->writeManagerAssets($am);
-echo '压缩公共文件成功';die;
+echo '压缩公共文件成功';
+echo '压缩后内容为'.file_get_contents('assets/css/base_development201809212230.css');
+die;
 
 // the code is merged when the asset is dumped
 echo $js->dump();
